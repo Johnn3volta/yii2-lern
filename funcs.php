@@ -1,7 +1,17 @@
 <?php
+function _log($data){
+
+    \Yii::info(\yii\helpers\VarDumper::dumpAsString($data, 5), '_');
+}
+
+function _end($data){
+    echo \yii\helpers\VarDumper::dumpAsString($data, 5, true);
+    exit();
+}
+
 /**
- * Created by PhpStorm.
- * User: ContentManager5
- * Date: 16.04.2018
- * Time: 16:05
+ * @return \yii\console\Application|\yii\web\Application|app\components\Application
  */
+function app(){
+    return \Yii::$app;
+}

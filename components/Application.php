@@ -9,6 +9,12 @@
 namespace app\components;
 
 
-class Application{
+/**
+ *  class Application
+ *
+ * @property Service $test
+ * @package app\components
+ */
+class Application extends \yii\web\Application{
 
 }
