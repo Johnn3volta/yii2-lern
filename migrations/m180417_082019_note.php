@@ -16,7 +16,6 @@ class m180417_082019_note extends Migration{
             'text'       => $this->text()->notNull(),
             'creator_id' => $this->integer()->notNull(),
             'created_at' => $this->integer(),
-            $this->addForeignKey('fx_note_user', 'note', ['creator_id'], 'user', ['id'])
         ]);
     }
 

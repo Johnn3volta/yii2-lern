@@ -15,8 +15,6 @@ class m180417_082033_access extends Migration{
             'id'      => $this->primaryKey(),
             'note_id' => $this->integer()->notNull(),
             'user_id' => $this->integer()->notNull(),
-            $this->addForeignKey('fx_access_user', 'access', ['user_id'], 'user', ['id']),
-            $this->addForeignKey('fx_access_note', 'access', ['note_id'], 'note', ['id']),
         ]);
     }
 
