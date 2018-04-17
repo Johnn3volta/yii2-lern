@@ -10,6 +10,6 @@
 $this->title = ' | Yii2 lern';
 ?>
 <pre>
-<?= $my['name'] ?>
+<?php print_r($my);  ?>
 
 </pre>

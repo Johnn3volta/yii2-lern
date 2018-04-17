@@ -1,7 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ContentManager5
- * Date: 17.04.2018
- * Time: 16:17
- */
+
+use yii\helpers\Html;
+
+/* @var $this yii\web\View */
+/* @var $models app\models\User */
+/* @var $models2 app\models\User */
+
+?>
+
+
+
+<div class="user-test">
+
+  <pre>
+    <?php print_r($models)?>
+</pre>
+    <pre>
+    <?php  print_r($models2)?>
+</pre>
+
+</div>
