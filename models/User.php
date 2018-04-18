@@ -39,11 +39,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface{
      */
     public function behaviors(){
         return [
-            [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-            ],
-
+            TimestampBehavior::class,
         ];
     }
 
@@ -87,15 +83,22 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface{
         ];
     }
 
+    /**
+     * @param bool $insert
+     *
+     * @return bool
+     * @throws \yii\base\Exception
+     */
     public function beforeSave($insert){
         if(!parent::beforeSave($insert)){
             return false;
         }
-        if ($this->isNewRecord) {
+        if($this->isNewRecord){
             $this->auth_key = Yii::$app->security->generateRandomString();
         }
         if($this->password){
-            $this->password_hash = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+            $this->password_hash = Yii::$app->getSecurity()
+                                            ->generatePasswordHash($this->password);
         }
 
         return true;
