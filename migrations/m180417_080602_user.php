@@ -18,8 +18,9 @@ class m180417_080602_user extends Migration{
             'surname'       => $this->string(255),
             'password_hash' => $this->string(255)->notNull(),
             'access_token'  => $this->string(255)->defaultValue('NULL'),
+            'auth_key'      => $this->string(255)->defaultValue('NULL'),
             'created_ad'    => $this->integer()->notNull(),
-            'updated_ad'    => $this->integer()
+            'updated_ad'    => $this->integer(),
 
         ]);
     }

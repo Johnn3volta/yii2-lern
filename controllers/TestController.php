@@ -11,6 +11,9 @@ use yii\web\Controller;
 
 class TestController extends Controller{
 
+    /**
+     * @return string
+     */
     public function actionIndex(){
         $model = Note::findOne(6);
         _end($model->creator->name);
@@ -18,6 +21,9 @@ class TestController extends Controller{
         return $this->render('index', ['my' => $model]);
     }
 
+    /**
+     * @return int|string
+     */
     public function actionSelect(){
         $query = (new Query())->from('user')->count();
         $query1 = (new Query())->from('user')->where(['id' => 1])->all();
@@ -26,8 +32,13 @@ class TestController extends Controller{
                                ->orderBy('id')
                                ->all();
         _end($query);
+
+        return $query;
     }
 
+    /**
+     * @throws \yii\db\Exception
+     */
     public function actionInsert(){
         \Yii::$app->db->createCommand()->batchInsert('user', [
             'username',

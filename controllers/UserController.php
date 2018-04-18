@@ -60,11 +60,14 @@ class UserController extends Controller{
         ]);
     }
 
+    /**
+     *
+     */
     public function actionAdd(){
         $model = User::findOne(2);
         $modNote = new Note();
         $modNote->text = 'Очередная запись'.time();
-        $modNote->link('creator',$model);
+        return $modNote->link('creator',$model);
     }
 
     /**
@@ -123,14 +126,12 @@ class UserController extends Controller{
     }
 
     /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index'
-     * page.
+     * @param $id
      *
-     * @param integer $id
-     *
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return \yii\web\Response
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     * @throws \yii\web\NotFoundHttpException
      */
     public function actionDelete($id){
         $this->findModel($id)->delete();

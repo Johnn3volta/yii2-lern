@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "note".
@@ -19,6 +21,16 @@ class Note extends \yii\db\ActiveRecord{
 
     const RELATION_CREATOR = 'creator';
 
+    public function behaviors(){
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'updatedAtAttribute' => false
+            ],
+        ];
+
+    }
+
     /**
      * @inheritdoc
      */
@@ -33,7 +45,7 @@ class Note extends \yii\db\ActiveRecord{
         return [
             [['text', 'creator_id'], 'required'],
             [['text'], 'string'],
-            [['creator_id','created_at'], 'integer'],
+            [['creator_id', 'created_at'], 'integer'],
             [
                 ['creator_id'],
                 'exist',
